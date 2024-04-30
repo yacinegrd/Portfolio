@@ -1,0 +1,66 @@
+/* Write your global styles here, in SCSS syntax. Variables and mixins from the src/variables.scss file are available here without importing */
+
+@font-face {
+  font-family: "Stara";
+  src: url("/Stara/Stara-Medium-BF65962709d948a.woff2") format("woff2");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Stara";
+  src: url("/Stara/Stara-SemiBold-BF65962709c807c.woff2") format("woff2");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Stara";
+  src: url("/Stara/Stara-Bold-BF65962709c55b4.woff2") format("woff2");
+  font-weight: 700;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #0e0e0e;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+section {
+  max-width: 1240px;
+  margin: auto;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+a {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+a{
+  font-family: "Stara";
+  font-weight: 600;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+body { 
+  padding: 0 10px;
+}
