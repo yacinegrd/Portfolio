@@ -298,17 +298,16 @@
         width: 100%;
       }
     }
-  }
-
-  .about-contact {
-    h2 {
-      span {
-        margin-left: 0;
-        width: calc(100% - 150px);
+    .about-contact {
+      h2 {
+        span {
+          margin-left: 0;
+          width: calc(100% - 150px);
+        }
       }
-    }
-    p {
-      margin-right: 0;
+      p {
+        margin-right: 0;
+      }
     }
   }
 </style>
