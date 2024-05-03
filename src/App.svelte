@@ -1,36 +1,36 @@
 <script>
+  import viewport from "./lib/useViewPortAction";
+  import docSVG from "/doc.on.doc.svg";
+  import emailSVG from "/email-icon.svg";
   import GRDlogo from "/GRD.svg";
+  import CustomCursor from "./lib/CustomCursor.svelte";
   import WorkCard from "./lib/WorkCard.svelte";
 
+  // handeling events
   const copytoclipboard = (e) => {
-    navigator.clipboard.writeText("yacine.grd@gmail.com");
-    document.querySelector(".copied").style.opacity = 1;
-    setTimeout(function () {
-      document.querySelector(".copied").style.opacity = 0;
-    }, 1000);
+    const email = e.target.innerText;
+    const tooltip = document.querySelector(".copied");
+
+    navigator.clipboard.writeText(email);
+
+    tooltip.animate([{ opacity: 0 }, { opacity: 1 }, { opacity: 0 }], {
+      duration: 1500,
+      fill: "forwards",
+      easing: "linear(0, 0.5, 0.5, 0.5, 0.5, 1)",
+    });
   };
 </script>
 
+<CustomCursor />
 <header id="top">
   <section>
-    <img src={GRDlogo} alt="logo GRD" />
+    <img src={GRDlogo} alt="logo GRD" class="logo" />
     <button on:click={copytoclipboard} class="email">
       <span class="copied">Copied to clipboard</span>
       <i
-        ><svg
-          width="17"
-          height="15"
-          viewBox="0 0 17 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M1.84733 3.00084C1.41663 3.91283 1.41663 5.21495 1.41663 7.5C1.41663 10.1561 1.41663 11.4841 2.09302 12.4151C2.31147 12.7157 2.57588 12.9802 2.87655 13.1986C3.80754 13.875 5.13557 13.875 7.79163 13.875H9.20829C11.8644 13.875 13.1924 13.875 14.1234 13.1986C14.424 12.9802 14.6884 12.7157 14.9069 12.4151C15.5833 11.4841 15.5833 10.1561 15.5833 7.5C15.5833 5.1988 15.5833 3.89448 15.1434 2.98156M1.84733 3.00084C1.91726 2.85276 1.99854 2.71497 2.09302 2.58493C2.31147 2.28426 2.57588 2.01985 2.87655 1.8014C3.80754 1.125 5.13557 1.125 7.79163 1.125H9.20829C11.8644 1.125 13.1924 1.125 14.1234 1.8014C14.424 2.01985 14.6884 2.28426 14.9069 2.58493C14.9973 2.70931 15.0756 2.84078 15.1434 2.98156M1.84733 3.00084L2.12496 3.25L3.49129 4.61633C5.8524 6.97744 7.03295 8.15799 8.49996 8.15799C9.96697 8.15799 11.1475 6.97744 13.5086 4.61633L14.875 3.25L15.1434 2.98156"
-            stroke="#FAFAFA"
-            stroke-width="1.5"
-          />
-        </svg>
-      </i>
+        ><img src={emailSVG} alt="email svg" class="email-svg" />
+        <img src={docSVG} alt="email svg" class="doc-svg" /></i
+      >
       <span>yacine.grd1@gmail.com</span>
     </button>
   </section>
@@ -38,13 +38,17 @@
 <main>
   <section class="hero">
     <div class="hero-text">
-      <h1>Wesite Developer & Designer</h1>
-      <p>
+      <h1 data-text="Wesite Developer & Designer" class="">
+        Wesite Developer & Designer
+      </h1>
+      <p class="">
         Crafting digital experiences that captivate, innovate, and inspire.
         Welcome to my portfolio, where pixels meet passion and code brings
         creativity to life.
       </p>
-      <a href="https://wa.link/1j0s2p" target="_blank">Contact</a>
+      <a href="https://wa.link/1j0s2p" target="_blank" class="hero-button"
+        ><span>Contact</span></a
+      >
     </div>
     <div class="hero-img">
       <img src="/my-image.png" alt="yacine guerandi" />
@@ -56,22 +60,34 @@
       tags="WordPress, JavaScript"
       src="/Frame 11.png"
       link="https://idklair.com"
+      order={0}
     />
     <WorkCard
       title="L'escale"
       tags="VueJs, Figma"
       src="/Frame 13.png"
       link="https://l-escale.netlify.app/"
+      order={1}
     />
     <WorkCard
       title="Dubai Elite Estate"
       tags="WordPress"
       src="/Frame 15.png"
       link="https://dubaieliteestate.com/"
+      order={2}
     />
   </section>
   <section class="about-contact">
-    <div class="about">
+    <div
+      use:viewport
+      on:enterViewPort={(e) => {
+        e.target.classList.add("show");
+      }}
+      on:exitViewPort={(e) => {
+        e.target.classList.remove("show");
+      }}
+      class="about hide"
+    >
       <h2>About <span></span></h2>
       <p>
         Hi there! I'm <strong>Yacine Guerandi</strong>, a passionate web
@@ -89,7 +105,16 @@
         <strong>Let's connect</strong> and bring your digital vision to life!
       </p>
     </div>
-    <div class="contact">
+    <div
+      use:viewport
+      on:enterViewPort={(e) => {
+        e.target.classList.add("show");
+      }}
+      on:exitViewPort={(e) => {
+        e.target.classList.remove("show");
+      }}
+      class="contact hide"
+    >
       <h2>Contact <span></span></h2>
       <p style="margin-bottom: 6px;">
         You can contact me using one of the methods below.
@@ -118,8 +143,35 @@
 </main>
 <footer>
   <section>
-    <h2>Thanks for viewing stay in touch ;)</h2>
-    <a href="#top" class="scroll">
+    <h2
+      use:viewport
+      on:enterViewPort={(e) => {
+        e.target.classList.add("show");
+      }}
+      on:exitViewPort={(e) => {
+        e.target.classList.remove("show");
+      }}
+      class="hide"
+    >
+      Thanks for viewing stay in touch ;)
+    </h2>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
+    <!-- svelte-ignore a11y-no-static-element-interactions -->
+    <!-- svelte-ignore a11y-missing-attribute -->
+    <a
+      use:viewport
+      on:click={(e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
+      on:enterViewPort={(e) => {
+        e.target.classList.add("show");
+      }}
+      on:exitViewPort={(e) => {
+        e.target.classList.remove("show");
+      }}
+      class="scroll hide"
+    >
       <i
         ><svg
           width="24"
@@ -141,25 +193,59 @@
 </footer>
 
 <style lang="scss">
+  //-------------------------------------------------------------------------------------------------
+
   header section {
     display: flex;
     justify-content: space-between;
     padding: 24px 0;
     .email {
       position: relative;
+      overflow: hidden;
+      &:hover {
+        .email-svg {
+          opacity: 0;
+          transform: translate(-50%, calc(-50% - 10px));
+        }
+        .doc-svg {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+      i {
+        position: relative;
+        height: 100%;
+        width: 17px;
+        img {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+        .email-svg {
+          transition: all 0.2s ease-out;
+        }
+        .doc-svg {
+          transition: all 0.2s ease-out;
+
+          opacity: 0;
+          transform: translate(-50%, calc(-50% + 10px));
+        }
+      }
       .copied {
+        pointer-events: none;
         opacity: 0;
         position: absolute;
         top: 35px;
-        left: 30px;
+        left: 22px;
         background-color: #1b1b1b;
         padding: 5px 20px;
         border-radius: 100px;
         color: #c5c5c5;
         transition: opacity 0.2s ease-in;
       }
-      .tooltip span {
-        transform: translateY(-2px);
+      span {
+        font-family: "Stara";
       }
       background-color: #1b1b1b;
       border-radius: 100px;
@@ -179,28 +265,62 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 80px auto 120px auto;
     img {
+      opacity: 0;
+      animation: fadein 1s ease-out 0.5s forwards;
       width: 450px;
     }
     h1 {
+      position: relative;
       font-size: 64px;
       line-height: 100%;
       max-width: 563px;
+      color: #00000000;
+      &::after {
+        content: attr(data-text);
+        color: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        animation: hero-text-animation 1s cubic-bezier(0.67, 0.31, 0.52, 0.63)
+          0.2s;
+
+        @keyframes hero-text-animation {
+          0% {
+            clip-path: xywh(0% 100% 100% 100%);
+          }
+          100% {
+            clip-path: xywh(0% 0% 100% 100%);
+          }
+        }
+      }
     }
     p {
+      animation: fadein 1s ease-out 0.7s forwards;
       color: #c5c5c5;
       margin-top: 18px;
       margin-bottom: 42px;
       max-width: 500px;
+      opacity: 0;
     }
     a {
+      animation: fadein 1s ease-out 1s forwards;
+      opacity: 0;
+
       background-color: white;
       color: #0e0e0e;
       border-radius: 50px;
       padding: 8px 55px;
       font-weight: 700;
-      &:hover {
-        background-color: rgb(191, 191, 191);
+      transition: background-color 0.5s ease-out;
+    }
+    @keyframes fadein {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
       }
     }
   }
@@ -248,6 +368,7 @@
       font-size: 48px;
       max-width: 483px;
       line-height: 1;
+      transition: opacity 0.8s ease-in;
     }
     .scroll {
       margin-top: 50px;
@@ -278,16 +399,13 @@
 
   @media only screen and (max-width: 500px) {
     header section {
-      img {
+      .logo {
         width: 30%;
       }
-      flex-direction: column;
+      align-items: center;
       gap: 8px;
       .email {
         width: min-content;
-        span {
-          transform: translateY(-2px);
-        }
       }
     }
     .hero {
@@ -308,6 +426,60 @@
       p {
         margin-right: 0;
       }
+    }
+  }
+
+  @media only screen and (min-width: 844px) {
+    .contact {
+      transition-delay: 0.2s !important;
+    }
+
+    .hero-button:hover span {
+      display: inline-block;
+      animation: button-animaiton 0.5s ease-out;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  .hide {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+  }
+
+  :global(.show) {
+    opacity: 1 !important;
+    transition: opacity 1s ease-in !important;
+  }
+  // cursor hover effects
+  :global(body:has(.hero-button:hover) #costum-cursor) {
+    transform: scale(6);
+  }
+  :global(body:has(.email:hover, .work-card a:hover) #costum-cursor) {
+    transform: scale(4);
+  }
+  :global(body:has(ul li a:hover) #costum-cursor) {
+    transform: scale(3);
+  }
+  :global(body:has(.scroll:hover, .logo:hover) #costum-cursor) {
+    transform: scale(5);
+  }
+
+  @keyframes button-animaiton {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    30% {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    50% {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
     }
   }
 </style>

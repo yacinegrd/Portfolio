@@ -1,12 +1,26 @@
 <script>
+  import viewport from "./useViewPortAction";
+
   export let title = "";
   export let tags;
   export let link;
   export let src;
+  export let order;
 </script>
 
-<div class="work-card">
-  <img {src} alt="portfolio" />
+<div
+  use:viewport
+  on:enterViewPort={(e) => {
+    e.target.classList.add("show-work");
+  }}
+  on:exitViewPort={(e) => {
+    e.target.classList.remove("show-work");
+  }}
+  style="--delay: {order * 0.2}s;"
+  class="work-card hide"
+>
+  <a href={link} target="_blank"><img {src} alt="portfolio" /></a>
+
   <div class="info">
     <div class="info-text">
       <h3>{title}</h3>
@@ -41,6 +55,11 @@
       padding: 10px 20px;
       border-radius: 100px;
       margin-right: 16px;
+      transition: filter 0.5s ease-out;
+
+      &:hover {
+        filter: brightness(0.7);
+      }
     }
     align-items: center;
     display: flex;
@@ -51,5 +70,25 @@
     height: 300px;
     object-fit: cover;
     border-radius: 16px;
+    transition: filter 0.5s ease-out;
+    &:hover {
+      filter: brightness(0.7);
+    }
+  }
+
+  .hide {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+  }
+
+  :global(.show-work) {
+    opacity: 1 !important;
+    transition: opacity 0.7s ease-in !important;
+  }
+
+  @media only screen and (min-width: 844px) {
+    :global(.show-work) {
+      transition-delay: var(--delay) !important;
+    }
   }
 </style>
