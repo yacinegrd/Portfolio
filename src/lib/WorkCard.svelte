@@ -2,7 +2,6 @@
   import viewport from "./useViewPortAction";
 
   export let title = "";
-  export let tags;
   export let link;
   export let src;
   export let order;
@@ -24,7 +23,6 @@
   <div class="info">
     <div class="info-text">
       <h3>{title}</h3>
-      <span class="tags">{tags}</span>
     </div>
     <a href={link} target="_blank">
       <i
@@ -54,7 +52,6 @@
       background-color: #1b1b1b;
       padding: 10px 20px;
       border-radius: 100px;
-      margin-right: 16px;
       transition: filter 0.5s ease-out;
 
       &:hover {
@@ -86,9 +83,19 @@
     transition: opacity 0.7s ease-in !important;
   }
 
+  .work-card {
+    width: auto;
+  }
+
   @media only screen and (min-width: 844px) {
     :global(.show-work) {
       transition-delay: var(--delay) !important;
+    }
+  }
+  @media only screen and (max-width: 844px) {
+    .work-card {
+      width: 100%;
+      max-width: 579px;
     }
   }
 </style>

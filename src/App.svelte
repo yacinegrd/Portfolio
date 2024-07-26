@@ -55,27 +55,41 @@
     </div>
   </section>
   <section class="work">
-    <WorkCard
-      title="Idklair Agency"
-      tags="WordPress, JavaScript"
-      src="/Frame 11.png"
-      link="https://idklair.com"
-      order={0}
-    />
-    <WorkCard
-      title="L'escale"
-      tags="VueJs, Figma"
-      src="/Frame 13.png"
-      link="https://l-escale.netlify.app/"
-      order={1}
-    />
-    <WorkCard
-      title="Dubai Elite Estate"
-      tags="WordPress"
-      src="/Frame 15.png"
-      link="https://dubaieliteestate.com/"
-      order={2}
-    />
+    <div class="row-1">
+      <WorkCard
+        title="Idklair Agency"
+        src="/work/idklair.png"
+        link="https://idklair.com"
+        order={0}
+      />
+
+      <WorkCard
+        title="Quartier D'affaires"
+        src="/work/qa.png"
+        link="https://development.idklair.com/"
+        order={1}
+      />
+    </div>
+    <div class="row-2">
+      <WorkCard
+        title="L'escale"
+        src="/work/escale.png"
+        link="https://l-escale.netlify.app/"
+        order={0}
+      />
+      <WorkCard
+        title="Green Flow Tech"
+        src="/work/gft.png"
+        link="https://green-flow-tech.netlify.app/"
+        order={1}
+      />
+      <WorkCard
+        title="Pro Pure Parfums"
+        src="/work/ppp.png"
+        link="https://www.pro-pure-parfums.dz"
+        order={2}
+      />
+    </div>
   </section>
   <section class="about-contact">
     <div
@@ -201,7 +215,6 @@
     padding: 24px 0;
     .email {
       position: relative;
-      overflow: hidden;
       &:hover {
         .email-svg {
           opacity: 0;
@@ -259,7 +272,15 @@
   .work {
     margin-top: 100px;
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 32px;
+    .row-1,
+    .row-2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
   }
   .hero {
     display: flex;
@@ -389,7 +410,10 @@
       flex-direction: column-reverse;
     }
     .work {
-      flex-direction: column;
+      .row-1,
+      .row-2 {
+        flex-direction: column;
+      }
     }
     .about-contact {
       flex-direction: column;

@@ -6,7 +6,9 @@
     const cursor = document.querySelector("#costum-cursor");
 
     body.addEventListener("mousemove", (e) => {
+      // @ts-ignore
       cursor.style.top = e.clientY + "px";
+      // @ts-ignore
       cursor.style.left = e.clientX + "px";
     });
   });
