@@ -133,7 +133,7 @@
       <p style="margin-bottom: 6px;">
         You can contact me using one of the methods below.
       </p>
-      <p><strong>Email : yacine.grd1@gmai.com</strong></p>
+      <p><strong>Email : yacine.grd1@gmail.com</strong></p>
       <p><strong>Phone : +213 791 78 64 01</strong></p>
       <p style="margin: 20px 0 6px 0;">Or you can follow me on social media.</p>
       <ul>
@@ -143,9 +143,8 @@
           </a>
         </li>
         <li>
-          <a
-            href="https://www.linkedin.com/in/yacine-guerandi-3b3642202/"
-            target="_blank">LinkedIn</a
+          <a href="https://www.linkedin.com/in/yacine-guerandi/" target="_blank"
+            >LinkedIn</a
           >
         </li>
         <li>
