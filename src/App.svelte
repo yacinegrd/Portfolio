@@ -41,7 +41,7 @@
       <h1 data-text="Wesite Developer & Designer" class="">
         Wesite Developer & Designer
       </h1>
-      <p class="">
+      <p class="sub-text">
         Crafting digital experiences that captivate, innovate, and inspire.
         Welcome to my portfolio, where pixels meet passion and code brings
         creativity to life.
@@ -62,12 +62,17 @@
         link="https://idklair.com"
         order={0}
       />
-
+      <WorkCard
+        title="UI Color Tester"
+        src="/work/ui-color-tester.png"
+        link="https://ui-color-tester.netlify.app"
+        order={1}
+      />
       <WorkCard
         title="Quartier D'affaires"
         src="/work/qa.png"
         link="https://development.idklair.com/"
-        order={1}
+        order={2}
       />
     </div>
     <div class="row-2">
@@ -104,11 +109,11 @@
     >
       <h2>About <span></span></h2>
       <p>
-        Hi there! I'm <strong>Yacine Guerandi</strong>, a passionate web
-        developer and designer with a flair for crafting unforgettable digital
-        experiences. With a keen eye for detail and a love for innovation, I
-        thrive on turning ideas into interactive realities that leave a lasting
-        impact.
+        Hi im <strong>Guerandi Yacine</strong> Full-stack developer with a
+        passion for crafting seamless user experiences. Proficient in
+        <strong>both front-end and back-end development</strong>, I enjoy
+        turning design concepts into functional realities. Currently pursuing a
+        Master's in Computer Science to deepen my technical expertise.
         <br /><br />
 
         When I'm not coding or designing, you can find me seeking inspiration in
@@ -116,7 +121,7 @@
         trends.
         <br /><br />
 
-        <strong>Let's connect</strong> and bring your digital vision to life!
+        <strong> Let's connect</strong> and build amazing digital products together!
       </p>
     </div>
     <div
@@ -148,7 +153,7 @@
           >
         </li>
         <li>
-          <a href="https://www.behance.net/grdycn" target="_blank">Behance</a>
+          <a href="https://github.com/yacinegrd" target="_blank">Github</a>
         </li>
       </ul>
     </div>
