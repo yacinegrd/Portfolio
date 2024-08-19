@@ -21,6 +21,18 @@
   };
 </script>
 
+<svelte:head>
+  <meta
+    property="og:title"
+    content="Guerandi Yacine - Web Developer & Designer"
+  />
+  <meta
+    property="og:description"
+    content="Let's work together to build amazing websites that help your business grow."
+  />
+  <meta property="og:image" content="/og-cover-image.png" />
+</svelte:head>
+
 <CustomCursor />
 <header id="top">
   <section>
